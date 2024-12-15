@@ -73,7 +73,7 @@ const ContentPage = () => {
             topic="content"
             create
             className="flex-grow"
-            link="/admin/content/create"
+            link="/dashboard/content/add-content"
             onSearch={handleSearch}
           />
         </div>
@@ -84,6 +84,7 @@ const ContentPage = () => {
             columns={column}
             data={content}
             onDelete={handleDelete}
+            route="content"
           />
         ) : (
           <div className="bg-white w-full flex items-center justify-center">

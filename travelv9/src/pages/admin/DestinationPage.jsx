@@ -66,9 +66,9 @@ const DestinationPage = () => {
             topic="Destination"
             create
             addText="Add Destination"
-            link="/admin/destination/create"
+            link="/dashboard/destination/add-destination"
             onSearch={handleSearch}
-            placeholder="Search Destination by Name"
+          placeholder="Search Destination by Name"
           />
         </div>
       </div>
@@ -79,6 +79,7 @@ const DestinationPage = () => {
             columns={column}
             data={destinations}
             onDelete={handleDelete}
+          route="destination"
           />
         ) : (
           <div className="bg-white w-full flex items-center justify-center">

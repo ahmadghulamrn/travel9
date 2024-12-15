@@ -7,6 +7,7 @@ import TruncatedText from "./TruncatedText";
 
 const ReusableTable = ({
   columns,
+  route = 'user',
   data,
   onDelete,
   actionColumn = true,
@@ -41,9 +42,9 @@ const ReusableTable = ({
     return item[column.key];
   };
 
-  const handleRowClick = (item) => {
+  const handleRowClick = (item, route) => {
     if (item.id) {
-      navigate(`detail/${item.id}`);
+      navigate(`${route}-details/${item.id}`);
     }
   };
 
@@ -92,7 +93,7 @@ const ReusableTable = ({
             {currentItems.map((item, rowIndex) => (
               <Table.Row
                 key={rowIndex}
-                onClick={() => handleRowClick(item)}
+                onClick={() => handleRowClick(item, route)}
                 className="bg-white hover:bg-blue-50 cursor-pointer"
               >
                 {/* Render sel berdasarkan kolom */}

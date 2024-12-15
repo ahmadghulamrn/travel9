@@ -16,7 +16,7 @@ const Login = () => {
 
       setAuth(data);
 
-      navigate("/admin");
+      navigate("/dashboard");
     } catch (error) {
       alert(
         error.response?.data?.message ||
