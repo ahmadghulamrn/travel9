@@ -65,6 +65,7 @@ const DestinationPage = () => {
           <SearchCard
             topic="Destination"
             create
+            addText="Add Destination"
             link="/admin/destination/create"
             onSearch={handleSearch}
             placeholder="Search Destination by Name"

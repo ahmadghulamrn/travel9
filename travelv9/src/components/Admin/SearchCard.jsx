@@ -9,6 +9,7 @@ const SearchCard = ({
   onSearch,
   placeholder = "Search",
   create = false,
+  addText = "Add Content",
   link,
 }) => {
   const [search, setSearch] = useState("");
@@ -56,7 +57,7 @@ const SearchCard = ({
               to={link}
               className="flex items-center gap-3 cursor-pointer border border-[#D4D4D4] h-full xl:w-[20%] w-full px-4 py-2 rounded-lg text-[#0EA5E9]"
             >
-              <FaPlus /> Add Content
+              <FaPlus /> {addText}
             </Link>
           )}
         </div>

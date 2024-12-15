@@ -117,9 +117,9 @@ const AddDestinationPage = () => {
 
   const availableFacilities = [
     "Toilets",
-    "Parking",
-    "Food Stalls",
-    "Souvenir Shops",
+    "Parking Area",
+    "Dining Area",
+    "Information Center",
   ];
 
   return (
@@ -131,25 +131,53 @@ const AddDestinationPage = () => {
       />
       <div className="flex flex-col md:flex-row gap-5 my-5 bg-white rounded-3xl shadow-lg p-6">
         <div className="flex flex-col gap-6 w-1/2">
-          {[0, 1, 2].map((index) => (
-            <div key={index} className="relative">
-              <Dropzone
-                className="h-48"
-                onFileUpload={(file) => handleImageUpload(file, index)}
-              />
-              {formData.image[index] && (
-                <div className="absolute top-2 right-2">
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveImage(index)}
-                    className="bg-red-500 text-white p-1 rounded-full"
-                  >
-                    ✕
-                  </button>
-                </div>
-              )}
-            </div>
-          ))}
+          <div className="grid lg:grid-cols-1 md:grid-cols-2 grid-cols-3 gap-6">
+            {formData.link_images.map((link, index) => (
+              <div
+                key={index}
+                className="border rounded-lg overflow-hidden relative group"
+              >
+                {link ? (
+                  <>
+                    <img
+                      src={link}
+                      alt={`Preview ${index + 1}`}
+                      className="w-full h-48 object-cover"
+                      onError={(e) => {
+                        e.target.src = "/placeholder-image.png";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
+                      <button
+                        type="button"
+                        onClick={() => window.open(link, "_blank")}
+                        className="opacity-0 group-hover:opacity-100 bg-white p-2 rounded-full shadow-lg"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div className="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500">
+                    No Image
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
         <div className="w-full space-y-6">
           <div className="w-full flex md:flex-row flex-col gap-6">
