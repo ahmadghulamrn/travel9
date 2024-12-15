@@ -10,6 +10,7 @@ const ReusableTable = ({
   route = 'user',
   data,
   onDelete,
+  onRowClick,
   actionColumn = true,
   itemsPerPage = 8,
   truncateConfig = {
@@ -42,8 +43,13 @@ const ReusableTable = ({
     return item[column.key];
   };
 
-  const handleRowClick = (item, route) => {
-    if (item.id) {
+  const handleRowClick = (item) => {
+    // Jika ada prop onRowClick, gunakan itu
+    if (onRowClick) {
+      onRowClick(item);
+    } 
+    // Jika tidak, gunakan navigasi default
+    else if (item.id) {
       navigate(`${route}-details/${item.id}`);
     }
   };
